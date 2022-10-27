@@ -25,13 +25,11 @@ struct CourseListView: View {
             }
         } else {
             ScrollView {
-                VStack {
+                VStack(spacing: 15) {
                     Text("\(courses.count)")
                     ForEach(courses) {  listedCourse in
-                        
                         CourseTileView(course: listedCourse)
                     }
-                    .padding()
                 }
             }
         }
@@ -72,24 +70,8 @@ struct Course: Identifiable, Codable {
     var image: String
 }
 
-//struct TempImage_Previews: PreviewProvider {
-//    static var previews: some View {
-//        VStack {
-//            Image(systemName: "books.vertical")
-//                .font(.largeTitle)
-//                .padding(80)
-//        }
-//        .frame(maxWidth: .infinity)
-//        .background(Color.gray)
-//
-//
-//    }
-//}
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        //        let courses: [Course] = [Course(id: 123, title:"Example Course", subtitle:"Learning how to do it", image: "https://zappycode.com/media/course_images/MasteringDjangoPart1CourseImage.png")]
-        //        CourseListView(courses: courses)
         CourseListView()
     }
 }
