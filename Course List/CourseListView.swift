@@ -13,14 +13,21 @@ struct CourseListView: View {
     
     var body: some View {
         VStack {
-            Text("\(courses.count)")
-            List(courses) { listedCourse in
-                Text(listedCourse.title)
-                    .lineLimit( 1)
+            if courses.count==0 {
+                ProgressView()
+                    .padding()
+                Text("Retrieving Courses")
+                    .foregroundColor(.purple)
+                    .onAppear(perform: {
+                        getCourses()
+                    })
+            } else {
+                Text("\(courses.count)")
+                List(courses) { listedCourse in
+                    Text(listedCourse.title)
+                        .lineLimit( 1)
+                }
             }
-            .onAppear(perform: {
-                getCourses()
-            })
         }
         .padding()
 
