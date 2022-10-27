@@ -33,16 +33,8 @@ struct CourseListView: View {
                     }
                     .padding()
                 }
-                //                .padding()
             }
-            
-            
-            
         }
-        
-        //        .padding()
-        
-        
     }
     
     func getCourses() {
