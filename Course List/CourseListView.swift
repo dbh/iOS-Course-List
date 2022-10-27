@@ -29,25 +29,7 @@ struct CourseListView: View {
                     Text("\(courses.count)")
                     ForEach(courses) {  listedCourse in
                         
-                        AsyncImage(url: URL(string: listedCourse.image)) { phase in
-                            
-                            switch phase {
-                            case .success(let image):
-                                image
-                                    .resizable()
-                                    .scaledToFill()
-                                
-                            default:
-                                VStack {
-                                    Image(systemName: "books.vertical")
-                                        .font(.largeTitle)
-                                        .padding(80)
-                                }
-                                .frame(maxWidth: .infinity)
-                                .background(Color.gray)
-                            }
-                            
-                        }
+                        CourseTileView(course: listedCourse)
                     }
                     .padding()
                 }
@@ -107,7 +89,7 @@ struct Course: Identifiable, Codable {
 //        }
 //        .frame(maxWidth: .infinity)
 //        .background(Color.gray)
-//        
+//
 //
 //    }
 //}

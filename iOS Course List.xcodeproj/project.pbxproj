@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F955BA1290B429F00664815 /* CourseTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F955BA0290B429F00664815 /* CourseTileView.swift */; };
 		3FAB997F290B214200C3534D /* Course_ListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAB997E290B214200C3534D /* Course_ListApp.swift */; };
 		3FAB9981290B214200C3534D /* CourseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAB9980290B214200C3534D /* CourseListView.swift */; };
 		3FAB9983290B214300C3534D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FAB9982290B214300C3534D /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F955BA0290B429F00664815 /* CourseTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTileView.swift; sourceTree = "<group>"; };
 		3FAB997B290B214200C3534D /* iOS iOS Course List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS iOS Course List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FAB997E290B214200C3534D /* Course_ListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course_ListApp.swift; sourceTree = "<group>"; };
 		3FAB9980290B214200C3534D /* CourseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseListView.swift; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				3FAB997E290B214200C3534D /* Course_ListApp.swift */,
+				3F955BA0290B429F00664815 /* CourseTileView.swift */,
 				3FAB9980290B214200C3534D /* CourseListView.swift */,
 				3FAB9982290B214300C3534D /* Assets.xcassets */,
 				3FAB9984290B214300C3534D /* Preview Content */,
@@ -139,6 +142,7 @@
 			files = (
 				3FAB9981290B214200C3534D /* CourseListView.swift in Sources */,
 				3FAB997F290B214200C3534D /* Course_ListApp.swift in Sources */,
+				3F955BA1290B429F00664815 /* CourseTileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
