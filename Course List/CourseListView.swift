@@ -12,24 +12,45 @@ struct CourseListView: View {
     @State var courses: [Course] = []
     
     var body: some View {
-        VStack {
+       
             if courses.count==0 {
-                ProgressView()
-                    .padding()
-                Text("Retrieving Courses")
-                    .foregroundColor(.purple)
-                    .onAppear(perform: {
-                        getCourses()
-                    })
-            } else {
-                Text("\(courses.count)")
-                List(courses) { listedCourse in
-                    Text(listedCourse.title)
-                        .lineLimit( 1)
+                VStack {
+                    ProgressView()
+                        .padding()
+                    Text("Retrieving Courses")
+                        .foregroundColor(.purple)
+                        .onAppear(perform: {
+                            getCourses()
+                        })
                 }
+            } else {
+                VStack {
+//                    Text("\(courses.count)")
+                    List(courses) { listedCourse in
+    //                    Text(listedCourse.title)
+    //                        .lineLimit( 1)
+                        AsyncImage(url: URL(string: listedCourse.image)) { phase in
+                            
+                            switch phase {
+                            case .success(let image):
+                                image
+                                    .resizable()
+                                    .scaledToFill()
+                            
+                            default:
+                                Text("Loading...")
+                            }
+                            
+                        }
+                    }
+                    .padding()
+                }
+//                .padding()
+                
+                
             }
-        }
-        .padding()
+        
+//        .padding()
 
 
     }
