@@ -14,12 +14,16 @@ struct CourseListView: View {
     var body: some View {
         VStack {
             Text("\(courses.count)")
-            Text("Hello, world!")
-                .padding()
-                .onAppear(perform: {
-                    getCourses()
-                })
+            List(courses) { listedCourse in
+                Text(listedCourse.title)
+                    .lineLimit( 1)
+            }
+            .onAppear(perform: {
+                getCourses()
+            })
         }
+        .padding()
+
 
     }
     
@@ -33,8 +37,8 @@ struct CourseListView: View {
                 if error != nil {
                     print("There was an error")
                 } else if data != nil {
-                    print(String(data: data!, encoding: .utf8) ?? "Error")
-                    
+//                    print(String(data: data!, encoding: .utf8) ?? "Error")
+//
                     if let coursesFromAPI = try?JSONDecoder().decode([Course].self, from: data!) {
                         
                         print(coursesFromAPI.count)
