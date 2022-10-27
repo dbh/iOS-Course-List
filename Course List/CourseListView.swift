@@ -12,23 +12,23 @@ struct CourseListView: View {
     @State var courses: [Course] = []
     
     var body: some View {
-       
-            if courses.count==0 {
+        
+        if courses.count==0 {
+            VStack {
+                ProgressView()
+                    .padding()
+                Text("Retrieving Courses")
+                    .foregroundColor(.purple)
+                    .onAppear(perform: {
+                        getCourses()
+                    })
+            }
+        } else {
+            ScrollView {
                 VStack {
-                    ProgressView()
-                        .padding()
-                    Text("Retrieving Courses")
-                        .foregroundColor(.purple)
-                        .onAppear(perform: {
-                            getCourses()
-                        })
-                }
-            } else {
-                VStack {
-//                    Text("\(courses.count)")
-                    List(courses) { listedCourse in
-    //                    Text(listedCourse.title)
-    //                        .lineLimit( 1)
+                    Text("\(courses.count)")
+                    ForEach(courses) {  listedCourse in
+                        
                         AsyncImage(url: URL(string: listedCourse.image)) { phase in
                             
                             switch phase {
@@ -36,23 +36,31 @@ struct CourseListView: View {
                                 image
                                     .resizable()
                                     .scaledToFill()
-                            
+                                
                             default:
-                                Text("Loading...")
+                                VStack {
+                                    Image(systemName: "books.vertical")
+                                        .font(.largeTitle)
+                                        .padding(80)
+                                }
+                                .frame(maxWidth: .infinity)
+                                .background(Color.gray)
                             }
                             
                         }
                     }
                     .padding()
                 }
-//                .padding()
-                
-                
+                //                .padding()
             }
+            
+            
+            
+        }
         
-//        .padding()
-
-
+        //        .padding()
+        
+        
     }
     
     func getCourses() {
@@ -65,8 +73,8 @@ struct CourseListView: View {
                 if error != nil {
                     print("There was an error")
                 } else if data != nil {
-//                    print(String(data: data!, encoding: .utf8) ?? "Error")
-//
+                    //                    print(String(data: data!, encoding: .utf8) ?? "Error")
+                    //
                     if let coursesFromAPI = try?JSONDecoder().decode([Course].self, from: data!) {
                         
                         print(coursesFromAPI.count)
@@ -90,10 +98,24 @@ struct Course: Identifiable, Codable {
     var image: String
 }
 
+//struct TempImage_Previews: PreviewProvider {
+//    static var previews: some View {
+//        VStack {
+//            Image(systemName: "books.vertical")
+//                .font(.largeTitle)
+//                .padding(80)
+//        }
+//        .frame(maxWidth: .infinity)
+//        .background(Color.gray)
+//        
+//
+//    }
+//}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-//        let courses: [Course] = [Course(id: 123, title:"Example Course", subtitle:"Learning how to do it", image: "https://zappycode.com/media/course_images/MasteringDjangoPart1CourseImage.png")]
-//        CourseListView(courses: courses)
+        //        let courses: [Course] = [Course(id: 123, title:"Example Course", subtitle:"Learning how to do it", image: "https://zappycode.com/media/course_images/MasteringDjangoPart1CourseImage.png")]
+        //        CourseListView(courses: courses)
         CourseListView()
     }
 }
